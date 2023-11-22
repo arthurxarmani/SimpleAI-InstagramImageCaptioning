@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple AI - Instagram Caption Generator</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <input type="file" id="imageInput">
+    <button onclick="uploadImage()">Generate Caption</button>
+    <p id="caption"></p>
+
+    <script>
+    function uploadImage() {
+        const input = document.getElementById('imageInput');
+        const data = new FormData();
+        data.append('file', input.files[0]);
+
+        fetch('/upload', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('caption').innerText = data.caption;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
+</body>
+</html>
