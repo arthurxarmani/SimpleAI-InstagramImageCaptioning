@@ -1,0 +1,6 @@
+Flask
+transformers
+Pillow
+torch 
+torchvision 
+torchaudio
